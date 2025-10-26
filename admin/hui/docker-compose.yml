@@ -1,0 +1,11 @@
+services:
+  wheel-of-fortune:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./config:/app/config
+      - ./static_files:/app/static_files
+    environment:
+      - UVICORN_WORKERS=1
+    command: ["python", "app.py"]

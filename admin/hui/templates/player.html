@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel of Fortune - Player {{ player_id }}</title>
+    <link rel="stylesheet" href="{{ request.url_for('static', path='css/slave.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slave-header">
+            <h1><span id="playerNameHeader">Player {{ player_id }}</span>
+                <button id="editNameBtn" title="Edit name" style="margin-left:10px">✏️</button>
+            </h1>
+            <div id="editNameModal" class="hidden modal-backdrop">
+                <div class="modal">
+                    <h3>Change your name</h3>
+                    <input id="playerNameInput" type="text" placeholder="Enter name" />
+                    <div class="modal-actions">
+                        <button id="savePlayerName" class="secret-btn">Save</button>
+                        <button id="cancelPlayerName" class="secret-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="waitingScreen" class="screen active">
+            <h1>Waiting for Task Selection</h1>
+            <div class="spinner"></div>
+            <p>Sas city! 🚗</p>
+        </div>
+
+        <div id="taskScreen" class="screen">
+            <div class="timer-container">
+                <div class="task-timer" id="taskTimer">
+                    <span id="timerDisplay">05:00</span>
+                </div>
+            </div>
+
+            <h1>Your Task</h1>
+            <div class="task-card">
+                <h2 id="taskName"></h2>
+                <div class="task-category" id="taskCategory"></div>
+
+                <div class="task-details">
+                    <p><strong>Type:</strong> <span id="taskType"></span></p>
+                </div>
+
+                <div id="staticContent" class="task-content hidden">
+                    <p>This is a static task. Download the required files below.</p>
+                    <button id="downloadButton" class="download-btn">Download Files</button>
+                </div>
+
+                <div id="dynamicContent" class="task-content hidden">
+                    <p>This is a dynamic task. Access the instance using the link below.</p>
+                    <a id="taskLink" href="#" target="_blank" class="task-link">Access Instance</a>
+                </div>
+
+                <!-- Secret Input Section -->
+                <div id="secretSection" class="secret-section hidden">
+                    <h3>Enter Solution Secret</h3>
+                    <div class="secret-input-group">
+                        <input type="password" id="secretInput" placeholder="Enter secret code">
+                        <button id="submitSecret" class="secret-btn">Submit</button>
+                    </div>
+                    <div id="secretResult" class="secret-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SLAVE_ID = {{ player_id }};
+    </script>
+    <script src="{{ request.url_for('static', path='js/slave.js') }}"></script>
+</body>
+
+</html>

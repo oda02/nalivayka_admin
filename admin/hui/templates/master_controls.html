@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel of Fortune - Controls</title>
+    <link rel="stylesheet" href="{{ request.url_for('static', path='css/master_controls.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Master Controls</h1>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <h3>Game Management</h3>
+                <button id="resetButton" class="reset-btn">Reset Game</button>
+                <button id="spinButton" class="spin-btn">Spin Wheel</button>
+                <button id="resetSlavesButton" class="reset-slaves-btn">Reset Slaves</button>
+                <button id="stopGameButton" class="reset-btn">Stop Game</button>
+                <button id="cancelRoundButton" class="reset-btn">Cancel Round</button>
+            </div>
+
+
+            <!-- Timer Controls -->
+            <div class="timer-controls">
+                <h3>Player Timers</h3>
+                <div class="slave-timers">
+                    <div class="slave-timer" id="slave1Timer">
+                        <h4>Player 1 Timer</h4>
+                        <div class="timer-display" id="slave1Display">05:00</div>
+                        <div class="timer-buttons">
+                            <button class="add-time-btn" data-slave="1" data-seconds="30">+30s</button>
+                            <button class="add-time-btn" data-slave="1" data-seconds="60">+60s</button>
+                            <button class="add-time-btn" data-slave="1" data-seconds="120">+2m</button>
+                        </div>
+                    </div>
+
+                    <div class="slave-timer" id="slave2Timer">
+                        <h4>Player 2 Timer</h4>
+                        <div class="timer-display" id="slave2Display">05:00</div>
+                        <div class="timer-buttons">
+                            <button class="add-time-btn" data-slave="2" data-seconds="30">+30s</button>
+                            <button class="add-time-btn" data-slave="2" data-seconds="60">+60s</button>
+                            <button class="add-time-btn" data-slave="2" data-seconds="120">+2m</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-panel">
+                <h3>Current Status</h3>
+                <p>Game State: <span id="gameState">waiting</span></p>
+                <div class="solution-status">
+                    <h4>Solution Status:</h4>
+                    <p>Player 1: <span id="slave1Status" class="status-pending">❌ Not Solved</span></p>
+                    <p>Player 2: <span id="slave2Status" class="status-pending">❌ Not Solved</span></p>
+                </div>
+
+                <div id="currentTask" class="task-info hidden">
+                    <h4>Current Task:</h4>
+                    <p><strong>Name:</strong> <span id="taskName"></span></p>
+                    <p><strong>Category:</strong> <span id="taskCategory"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="/master" class="nav-link">Go to Wheel Display</a>
+        </div>
+    </div>
+
+    <script src="{{ request.url_for('static', path='js/master_controls.js') }}">
+    </script>
+</body>
+
+</html>

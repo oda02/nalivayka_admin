@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel of Fortune - Display</title>
+    <link rel="stylesheet" href="{{ request.url_for('static', path='css/master.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Wheel of Fortune</h1>
+        </div>
+
+        <div class="wheel-container">
+            <div class="wheel-pointer"></div>
+            <svg id="wheel" width="400" height="400" viewBox="0 0 400 400">
+                <!-- Wheel will be drawn here by JavaScript -->
+            </svg>
+            <div class="player-timers">
+                <div>
+                    <div id="player1NameLabel">Player 1</div>
+                    <div class="timer-display" id="player1Timer">--:--</div>
+                </div>
+                <div>
+                    <div id="player2NameLabel">Player 2</div>
+                    <div class="timer-display" id="player2Timer">--:--</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="spinButton">Spin Wheel</button>
+            <button id="resetUsersButton">Reset User Tasks</button>
+        </div>
+
+        <div class="info-panel">
+            <h3>Current Status</h3>
+            <p>Used tasks: <span id="usedCount">0</span>/<span id="totalCount">0</span></p>
+            <p>Game State: <span id="gameState">waiting</span></p>
+            <div id="currentTask" class="task-info hidden">
+                <h4>Selected Task:</h4>
+                <p><strong>Name:</strong> <span id="taskName"></span></p>
+                <p><strong>Category:</strong> <span id="taskCategory"></span></p>
+                <p><strong>Type:</strong> <span id="taskType"></span></p>
+                <p><strong>Link:</strong> <span id="taskLink"></span></p>
+            </div>
+
+            <div class="solution-status">
+                <h4>Solution Status:</h4>
+                <p>Player 1: <span id="slave1Status" class="status-pending">❌ Not Solved</span></p>
+                <p>Player 2: <span id="slave2Status" class="status-pending">❌ Not Solved</span></p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="/master_controls" class="nav-link">Go to Controls</a>
+        </div>
+    </div>
+
+    <script src="{{ request.url_for('static', path='js/master.js') }}"></script>
+</body>
+
+</html>

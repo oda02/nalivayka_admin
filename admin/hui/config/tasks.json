@@ -1,0 +1,46 @@
+{
+  "tasks": [
+    {
+      "name": "Math Problem Set",
+      "category": "Mathematics",
+      "link": "problem_set.pdf",
+      "type": "Static",
+      "secret": "math123"
+    },
+    {
+      "name": "Coding Challenge",
+      "category": "Programming",
+      "link": "coding_task.zip",
+      "type": "Static",
+      "secret": "code456"
+    },
+    {
+      "name": "Web Application",
+      "category": "Development",
+      "link": "http://localhost:3000",
+      "type": "Dynamic",
+      "secret": "web789"
+    },
+    {
+      "name": "API Endpoint",
+      "category": "Backend",
+      "link": "http://api.example.com",
+      "type": "Dynamic",
+      "secret": "api012"
+    },
+    {
+      "name": "Documentation Review",
+      "category": "Documentation",
+      "link": "docs.pdf",
+      "type": "Static",
+      "secret": "doc345"
+    },
+    {
+      "name": "Database Task",
+      "category": "Database",
+      "link": "http://db-admin:8080",
+      "type": "Dynamic",
+      "secret": "db678"
+    }
+  ]
+}
