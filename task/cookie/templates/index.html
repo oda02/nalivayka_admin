@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}AES Demo - Register{% endblock %}
+{% block content %}
+<h2>Register</h2>
+<p class="muted">Username: 3-50 chars, Latin letters and digits.</p>
+<form method="post" action="/register">
+    <div class="row">
+        <input type="text" name="name" placeholder="username" minlength="3" maxlength="50" pattern="[A-Za-z0-9]{3,50}"
+            required />
+    </div>
+    <div class="row">
+        <button type="submit">Get session cookie</button>
+    </div>
+</form>
+<form method="get" action="/sources">
+    <div class="row">
+        <button type="submit">Download sources (zip)</button>
+    </div>
+</form>
+{% if message %}
+<p class="success">{{ message }}</p>
+{% endif %}
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+<p class="center muted"><a class="link" href="/admin">Go to /admin</a> · <a class="link" href="/me">View /me (only if
+        you admit to yourself that you are too weak.)</a>
+</p>
+{% endblock %}

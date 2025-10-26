@@ -1,0 +1,12 @@
+services:
+  cookie:
+    build:
+      context: .
+      dockerfile: cookie/Dockerfile
+    environment:
+      - FLAG=${FLAG:-SAS{us3r_2_r00t_v14_b1tfl1p}}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./cookie/sources:/app/cookie/sources:ro
+    restart: unless-stopped

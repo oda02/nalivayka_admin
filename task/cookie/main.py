@@ -1,9 +1,9 @@
 from __future__ import annotations
 
+from cookie.routers.session import router as session_router
 from fastapi import FastAPI  # type: ignore
-from routers.session import router as session_router
 
-app = FastAPI(title="CBC Bitflip Session Demo (AES)")
+app = FastAPI(title="Cookie")
 app.include_router(session_router)
 
 
